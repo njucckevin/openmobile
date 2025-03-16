@@ -320,6 +320,7 @@
             <!-- 插入第一张图片 -->
             <figure class="image is-centered">
               <img src="figures/Elo_rating.PNG" alt="Elo_rating">
+              <img src="figures/win_rate_mat.PNG" alt="win_rate_mat">
             </figure>
             <p>
               CapArena uncovers disparities in fine-grained visual perception across models. As shown in the correlation between vision-language benchmark scores and CapArena ranking, strong performance on general benchmarks does not always translate to superior captioning ability.
@@ -349,7 +350,16 @@
         padding: 1.5rem;
         margin-bottom: 2rem;
       }
-  
+      .image-container {
+        display: flex; 
+        justify-content: center; 
+        gap: 10px; 
+      }
+
+      .image-container img {
+        width: 48%; /* 让图片占据 48% 宽度，确保不会超出 */
+        height: auto; /* 保持图片原比例 */
+      }
       .requirements-list {
         display: flex;
         flex-direction: column;
