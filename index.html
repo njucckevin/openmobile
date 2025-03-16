@@ -42,6 +42,10 @@
     text-align: center; /* 居中 */
     margin-bottom: 10px; /* 与下方内容保持间距 */
   }
+  .section {
+  padding-top: 2rem; /* 默认是 3rem，可以减少 */
+  padding-bottom: 2rem;
+}
 
   .content p {
     font-size: 1.2rem; /* 调整字体大小，例如 1.2rem 或 16px */
@@ -250,7 +254,7 @@
 
   <section class="hero teaser">
     <h4 class="subtitle has-text-centered">
-      <h3 class="leaderboard-title">Leaderboard (Update Date: 2025-3-15)</h3>
+      <h3 class="leaderboard-title">Leaderboard</h3>
       </h4>
 
 
@@ -285,7 +289,7 @@
   <section class="section">
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-3">Experiments</h2>
+        <h2 class="title is-3">How well do current VLMs actually perform on image captioning?</h2>
       </div>
     </div>
   
@@ -293,18 +297,6 @@
       <div class="columns is-centered">
         <div class="column">
           <div class="content">
-            <div class="requirements-box mb-4">
-              <p class="mb-3">
-                We design experiments to address the following two questions:
-              </p>
-              <div class="requirements-list">
-                <span class="requirement">1) How well do current VLMs actually perform on image captioning?</span>
-                <span class="requirement">2) Can automated metrics reliably assess detailed caption quality?</span>
-              </div>
-            </div>
-  
-            <!-- 第一部分：VLM在图像字幕生成上的表现 -->
-            <h3 class="title is-4">1) How well do current VLMs actually perform on image captioning?</h3>
             <p>
               We built CapArena, the first large-scale human-centered empirical study to benchmark advanced VLMs performance, which contained over 6000 pairwise caption battles and high-quality human preference votes. Our arena-style evaluation marks a milestone, showing that leading models like GPT-4o achieve or even surpass human performance, while most open-source models still lag behind.
             </p>
@@ -319,8 +311,20 @@
             <figure class="image-one">
               <img src="figures/rank_score.PNG" alt="rank_score">
             </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Can automated metrics reliably assess detailed caption quality?</h2>
+      </div>
+    </div>
             <!-- 第二部分：自动评测指标的可靠性 -->
-            <h3 class="title is-4">2) Can automated metrics reliably assess detailed caption quality?</h3>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
             <p>
               Using human annotations from CapArena, we evaluate traditional captioning metrics (e.g., BLEU, CIDER, METEOR) and recent proposed captioning metrics, as well as the ability of VLM-as-a-Judge to assess detailed caption quality. 
             </p>
@@ -334,9 +338,7 @@
               <img src="figures/Metrics_bias.PNG" alt="Metrics_bias"> 
             </figure>
             <p>
-              <strong>Systematic biases—overestimating or underestimating certain models are a critical concern.</strong> 
-
-              METEOR and Output Length (which simply favors longer captions) exhibit decent caption-level agreement, but their model-level agreement is notably lower. As displayed above, all metrics exhibit systematic biases. The degree of bias varies across metrics; Output Length shows a particularly strong bias, while GPT-4o-as-a-Judge has a lower bias than METEOR (average 4.4% vs. 8.2%). This suggests that the disagreement between GPT-4o-as-a-Judge and humans is more likely due to random preferences per independent sample, rather than harmful bias towards specific models, leading to more accurate model ranking estimates.
+              <strong>Systematic biases—overestimating or underestimating certain models are a critical concern.</strong>METEOR and Output Length (which simply favors longer captions) exhibit decent caption-level agreement, but their model-level agreement is notably lower. As displayed above, all metrics exhibit systematic biases. The degree of bias varies across metrics; Output Length shows a particularly strong bias, while GPT-4o-as-a-Judge has a lower bias than METEOR (average 4.4% vs. 8.2%). This suggests that the disagreement between GPT-4o-as-a-Judge and humans is more likely due to random preferences per independent sample, rather than harmful bias towards specific models, leading to more accurate model ranking estimates.
             </p>
           </div>
         </div>
@@ -392,7 +394,6 @@
         <h2 class="title is-3">CapArena-Auto: An Automated Benchmark for Detailed Captioning</h2>
       </div>
     </div>
-  
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column">
@@ -411,7 +412,7 @@
     <style>
 
       .image-one img {
-        width: 80%;  
+        width: 70%;  
         height: auto;
         display: block;
         margin: 0 auto; 
