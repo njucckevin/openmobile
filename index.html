@@ -325,16 +325,23 @@
             <p>
               CapArena uncovers disparities in fine-grained visual perception across models. As shown in the correlation between vision-language benchmark scores and CapArena ranking, strong performance on general benchmarks does not always translate to superior captioning ability.
             </p>
-  
+            <figure class="image-one">
+              <img src="figures/rank_score.PNG" alt="rank_score">
+            </figure>
             <!-- 第二部分：自动评测指标的可靠性 -->
             <h3 class="title is-4">2) Can automated metrics reliably assess detailed caption quality?</h3>
             <p>
               Using human annotations from CapArena, we evaluate traditional captioning metrics (e.g., BLEU, CIDER, METEOR) and recent proposed captioning metrics, as well as the ability of VLM-as-a-Judge to assess detailed caption quality. 
             </p>
-
+            <figure class="image-one">
+              <img src="figures/Eva_of_var_metrics.PNG" alt="Eva_of_var_metrics">
+            </figure>
             <p>
               Our results reveal that most metrics designed for short captions, such as CLIPScore, fail entirely in the detailed captioning task. Although some rule-based metrics, such as METEOR, exhibit decent agreement with human judgments at the caption level, they suffer from systematic biases across different VLMs. This results in low agreement at the model level, where the rankings produced by these metrics deviate significantly from human rankings. In contrast, we introduce VLM-as-a-Judge with reference captions, which demonstrates robust discernment for detailed captions. It achieves the highest alignment with human judgments at both the caption and model levels.
             </p>
+            <figure class="image-one">
+              <img src="figures/Metrics_bias.PNG" alt="Metrics_bias"> 
+            </figure>
           </div>
         </div>
       </div>
@@ -357,7 +364,7 @@
       }
 
       .image-container img {
-        width: 40%; 
+        width: 45%; 
         height: auto;
       }
       .requirements-list {
