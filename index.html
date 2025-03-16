@@ -342,6 +342,11 @@
             <figure class="image-one">
               <img src="figures/Metrics_bias.PNG" alt="Metrics_bias"> 
             </figure>
+            <p>
+              <strong>Systematic biases—overestimating or underestimating certain models are a critical concern.</strong> 
+              
+              METEOR and Output Length (which simply favors longer captions) exhibit decent caption-level agreement, but their model-level agreement is notably lower. As displayed above, all metrics exhibit systematic biases. The degree of bias varies across metrics; Output Length shows a particularly strong bias, while GPT-4o-as-a-Judge has a lower bias than METEOR (average 4.4% vs. 8.2%). This suggests that the disagreement between GPT-4o-as-a-Judge and humans is more likely due to random preferences per independent sample, rather than harmful bias towards specific models, leading to more accurate model ranking estimates.
+            </p>
           </div>
         </div>
       </div>
