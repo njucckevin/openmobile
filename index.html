@@ -283,7 +283,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Image captioning has been a longstanding challenge in vision-language research. With the rise of LLMs, modern Vision-Language Models (VLMs) generate detailed and comprehensive image descriptions. However, benchmarking the quality of such captions remains unresolved. This paper addresses two key questions: (1) How well do VLMs actually perform on image captioning, particularly compared to humans? We built CapArena, a platform with over 6000 pairwise caption battles and high-quality human preference votes. Our Arena-style evaluation marks a milestone, showing that leading models like GPT-4o achieve or even surpass human performance, while most open-source models lag behind. (2) Can automated metrics reliably assess caption quality? Using human annotations from CapArena, we evaluate traditional and recent captioning metrics, as well as VLM-as-a-Judge. Our analysis reveals that while some metrics (e.g., METEOR) show decent caption-level agreement with humans, their systematic biases lead to inconsistencies in model ranking. In contrast, VLM-as-a-Judge demonstrates robust discernment at both the caption and model levels. Building on these insights, we release CapArena-Auto, an accurate and efficient automated benchmark for detailed captioning, achieving 94.3% correlation with human rankings at just $4 per test. 
+              Image captioning has been a longstanding challenge in vision-language research. With the rise of LLMs, modern Vision-Language Models (VLMs) generate detailed and comprehensive image descriptions. However, benchmarking the quality of such captions remains unresolved. This paper addresses two key questions:<strong>(1) How well do VLMs actually perform on image captioning, particularly compared to humans?</strong> We built CapArena, a platform with over 6000 pairwise caption battles and high-quality human preference votes. Our Arena-style evaluation marks a milestone, showing that leading models like GPT-4o achieve or even surpass human performance, while most open-source models lag behind. <strong>(2) Can automated metrics reliably assess caption quality?</strong> Using human annotations from CapArena, we evaluate traditional and recent captioning metrics, as well as VLM-as-a-Judge. Our analysis reveals that while some metrics (e.g., METEOR) show decent caption-level agreement with humans, their systematic biases lead to inconsistencies in model ranking. In contrast, VLM-as-a-Judge demonstrates robust discernment at both the caption and model levels. Building on these insights, we release CapArena-Auto, an accurate and efficient automated benchmark for detailed captioning, achieving 94.3% correlation with human rankings at just $4 per test. 
            </p>
           </div>
         </div>
@@ -291,6 +291,83 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Experiments</h2>
+      </div>
+    </div>
+  
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <div class="requirements-box mb-4">
+              <p class="mb-3">
+                We design experiments to address the following two questions:
+              </p>
+              <div class="requirements-list">
+                <span class="requirement">1) How well do current VLMs actually perform on image captioning?</span>
+                <span class="requirement">2) Can automated metrics reliably assess detailed caption quality?</span>
+              </div>
+            </div>
+  
+            <!-- 第一部分：VLM在图像字幕生成上的表现 -->
+            <h3 class="title is-4">1) How well do current VLMs actually perform on image captioning?</h3>
+            <p>
+              We built CapArena, the first large-scale human-centered empirical study to benchmark advanced VLMs performance, which contained over 6000 pairwise caption battles and high-quality human preference votes. Our arena-style evaluation marks a milestone, showing that leading models like GPT-4o achieve or even surpass human performance, while most open-source models still lag behind.
+            </p>
+            <!-- 插入第一张图片 -->
+            <figure class="image is-centered">
+              <img src="figures/Elo_rating.PNG" alt="Elo_rating">
+            </figure>
+            <p>
+              CapArena uncovers disparities in fine-grained visual perception across models. As shown in the correlation between vision-language benchmark scores and CapArena ranking, strong performance on general benchmarks does not always translate to superior captioning ability.
+            </p>
+  
+            <!-- 第二部分：自动评测指标的可靠性 -->
+            <h3 class="title is-4">2) Can automated metrics reliably assess detailed caption quality?</h3>
+            <p>
+              Using human annotations from CapArena, we evaluate traditional captioning metrics (e.g., BLEU, CIDER, METEOR) and recent proposed captioning metrics, as well as the ability of VLM-as-a-Judge to assess detailed caption quality. 
+            </p>
+
+            <p>
+              Our results reveal that most metrics designed for short captions, such as CLIPScore, fail entirely in the detailed captioning task. Although some rule-based metrics, such as METEOR, exhibit decent agreement with human judgments at the caption level, they suffer from systematic biases across different VLMs. This results in low agreement at the model level, where the rankings produced by these metrics deviate significantly from human rankings. In contrast, we introduce VLM-as-a-Judge with reference captions, which demonstrates robust discernment for detailed captions. It achieves the highest alignment with human judgments at both the caption and model levels.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <br>
+    <br>
+  
+    <style>
+      .requirements-box {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+  
+      .requirements-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+  
+      .requirement {
+        color: #2c3e50;
+        font-weight: 600;
+      }
+  
+      .title.is-4 {
+        margin-top: 2rem;
+        color: #34495e;
+      }
+    </style>
+  </section>
+  
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
