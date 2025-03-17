@@ -306,7 +306,7 @@
             <p>
               CapArena uncovers disparities in fine-grained visual perception across models. As shown in the correlation between vision-language benchmark scores and CapArena ranking, strong performance on general benchmarks does not always translate to superior captioning ability.
             </p>
-            <figure class="image-one">
+            <figure class="image-one1">
               <img src="figures/rank_score.PNG" alt="rank_score">
             </figure>
           </div>
@@ -328,12 +328,6 @@
         display: flex; 
         justify-content: center; 
         gap: 10px; 
-      }
-      .image-one img {
-        width: 90%;  
-        height: 90%;
-        display: block;
-        margin: 0 auto; 
       }
       .image-container img {
         width: 48%; 
@@ -372,13 +366,13 @@
             <p>
               Using human annotations from CapArena, we evaluate traditional captioning metrics (e.g., BLEU, CIDER, METEOR) and recent proposed captioning metrics, as well as the ability of VLM-as-a-Judge to assess detailed caption quality. 
             </p>
-            <figure class="image-one">
+            <figure class="image-one1">
               <img src="figures/Eva_of_var_metrics.PNG" alt="Eva_of_var_metrics">
             </figure>
             <p>
               Our results reveal that most metrics designed for short captions, such as CLIPScore, fail entirely in the detailed captioning task. Although some rule-based metrics, such as METEOR, exhibit decent agreement with human judgments at the caption level, they suffer from systematic biases across different VLMs. This results in low agreement at the model level, where the rankings produced by these metrics deviate significantly from human rankings. In contrast, we introduce VLM-as-a-Judge with reference captions, which demonstrates robust discernment for detailed captions. It achieves the highest alignment with human judgments at both the caption and model levels.
             </p>
-            <figure class="image-one">
+            <figure class="image-one1">
               <img src="figures/Metrics_bias.PNG" alt="Metrics_bias"> 
             </figure>
             <p>
@@ -399,20 +393,15 @@
         padding: 1.5rem;
         margin-bottom: 2rem;
       }
-      .image-one1 img {
-        width: 90%;  
-        height: 90%;
-        display: block;
-        margin: 0 auto; 
-      }
+
       .image-container {
         display: flex; 
         justify-content: center; 
         gap: 10px; 
       }
-      .image-one img {
+      .image-one1 img {
         width: 80%;  
-        height: auto;
+        height: 80%;
         display: block;
         margin: 0 auto; 
       }
