@@ -171,13 +171,14 @@
               <span class="author-block">
                 <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Zheng Ma<sup>1</sup></a>,
               </span>
+              <span class="author-block">
+                <a href="https://qiushisun.github.io/" style="color:rgb(41, 179, 225);font-weight:normal;">Qiushi Sun<sup>2</sup></a>,
+              </span>
             </div>
             
             <div class="is-size-5">
               <!-- 第二行作者 -->
-              <span class="author-block">
-                <a href="https://qiushisun.github.io/" style="color:rgb(41, 179, 225);font-weight:normal;">Qiushi Sun<sup>2</sup></a>,
-              </span>
+  
               <span class="author-block">
                 <a href="https://xufangzhi.github.io/" style="color:rgb(41, 179, 225);font-weight:normal;">Fangzhi Xu<sup>3</sup></a>,
               </span>
@@ -187,10 +188,6 @@
               <span class="author-block">
                 <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Nuo Chen<sup>1</sup></a>,
               </span>
-            </div>
-            
-            <div class="is-size-5">
-              <!-- 第三行作者 -->
               <span class="author-block">
                 <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Jianbing Zhang<sup>1</sup></a>,
               </span>
@@ -198,6 +195,7 @@
                 <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Jiajun Chen<sup>1</sup></a>,
               </span>
             </div>
+            
             
             <div class="publication-authors">
               <span class="author-block"><sup>1</sup>Nanjing University</span>
@@ -315,7 +313,51 @@
         </div>
       </div>
     </div>
+    <br>
+    <br>
+
+    <style>
+      .requirements-box {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .image-container {
+        display: flex; 
+        justify-content: center; 
+        gap: 10px; 
+      }
+      .image-one img {
+        width: 90%;  
+        height: 90%;
+        display: block;
+        margin: 0 auto; 
+      }
+      .image-container img {
+        width: 48%; 
+        height: 48%;
+      }
+      .requirements-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+  
+      .requirement {
+        color: #2c3e50;
+        font-weight: 600;
+      }
+  
+      .title.is-4 {
+        margin-top: 2rem;
+        color: #34495e;
+      }
+    </style>
   </section>
+
+
   <section class="section">
             <!-- 第二部分：自动评测指标的可靠性 -->
     <div class="columns is-centered has-text-centered">
@@ -340,7 +382,7 @@
               <img src="figures/Metrics_bias.PNG" alt="Metrics_bias"> 
             </figure>
             <p>
-              <strong>Systematic biases—overestimating or underestimating certain models are a critical concern.</strong>METEOR and Output Length (which simply favors longer captions) exhibit decent caption-level agreement, but their model-level agreement is notably lower. As displayed above, all metrics exhibit systematic biases. The degree of bias varies across metrics; Output Length shows a particularly strong bias, while GPT-4o-as-a-Judge has a lower bias than METEOR (average 4.4% vs. 8.2%). This suggests that the disagreement between GPT-4o-as-a-Judge and humans is more likely due to random preferences per independent sample, rather than harmful bias towards specific models, leading to more accurate model ranking estimates.
+              <strong>Systematic biases—overestimating or underestimating certain models are a critical concern.</strong> METEOR and Output Length (which simply favors longer captions) exhibit decent caption-level agreement, but their model-level agreement is notably lower. As displayed above, all metrics exhibit systematic biases. The degree of bias varies across metrics; Output Length shows a particularly strong bias, while GPT-4o-as-a-Judge has a lower bias than METEOR (average 4.4% vs. 8.2%). This suggests that the disagreement between GPT-4o-as-a-Judge and humans is more likely due to random preferences per independent sample, rather than harmful bias towards specific models, leading to more accurate model ranking estimates.
             </p>
           </div>
         </div>
@@ -356,6 +398,12 @@
         border-radius: 8px;
         padding: 1.5rem;
         margin-bottom: 2rem;
+      }
+      .image-one1 img {
+        width: 90%;  
+        height: 90%;
+        display: block;
+        margin: 0 auto; 
       }
       .image-container {
         display: flex; 
@@ -414,7 +462,7 @@
     <style>
 
       .image-one img {
-        width: 60%;  
+        width: 50%;  
         height: auto;
         display: block;
         margin: 0 auto; 
@@ -440,6 +488,17 @@
     </div>
   </section>
 
+  <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      <p>
+        This website is adapted from <a href="https://github.com/llava-vl/llava-vl.github.io">LLaVA-VL</a> and <a
+        href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>. 
+
+      <p>
+    </div>
+  </section>
 </body>
 
 </html>
