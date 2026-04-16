@@ -158,11 +158,12 @@
   }
 
   .embed-wrapper iframe {
-    width: 100%;
-    height: 820px;
-    border: 0;
     display: block;
+    border: 0;
     background: #f9fafb;
+    width: 1440px;
+    height: 820px;
+    transform-origin: 0 0;
   }
 
   .figure-frame {
@@ -250,10 +251,6 @@
 
     .author-row {
       font-size: 1rem;
-    }
-
-    .embed-wrapper iframe {
-      height: 600px;
     }
 
     .stat-grid {
@@ -369,7 +366,7 @@
   </section>
 
   <section class="section" id="hf-space">
-    <div class="container is-max-widescreen">
+    <div class="container is-max-desktop">
       <div class="has-text-centered">
         <h2 class="title is-3 section-title">OpenMobile DataViewer</h2>
       </div>
@@ -598,5 +595,19 @@
       </p>
     </div>
   </section>
+  <script>
+    (function () {
+      var wrap = document.querySelector('.embed-wrapper');
+      var iframe = wrap.querySelector('iframe');
+      var srcW = 1440, srcH = 820;
+      function fit() {
+        var s = wrap.clientWidth / srcW;
+        iframe.style.transform = 'scale(' + s + ')';
+        wrap.style.height = (srcH * s) + 'px';
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  </script>
 </body>
 </html>
