@@ -1,293 +1,398 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Textual Temporal Reasoning Transfer">
-  <meta name="keywords" content="multimodal chatbot">
+  <meta name="description" content="OpenMobile: Building Open Mobile Agents with Task and Trajectory Synthesis">
+  <meta name="keywords" content="mobile agents, GUI agents, vision-language models, task synthesis, trajectory synthesis">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CapArena-Bench</title>
+  <title>OpenMobile</title>
   <link rel="icon" href="figures/head1.png">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.16.0/gradio.js"></script>
 </head>
 
 <style>
-  .publication-authors {
+  body {
+    font-family: "Google Sans", "Noto Sans", sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+  }
+
+  .hero {
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+  }
+
+  .hero-body {
+    padding-top: 3.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .publication-title {
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .publication-subtitle {
+    max-width: 900px;
+    margin: 0 auto 1.25rem;
+    color: #4b5563;
+    font-size: 1.2rem;
+  }
+
+  .author-row,
+  .publication-authors,
+  .author-notes {
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中（如果父元素有固定高度） */
-    gap: 15px; /* 学校之间的间距 */
-    font-size: 1.2rem; /* 适中的字体大小 */
-    font-weight: 500; /* 适当的加粗 */
-    color: #333; /* 轻柔的深灰色 */
-    text-align: center; /* 确保文本也居中 */
-  }
-
-  .leaderboard-title {
-    font-size: 1.5rem; /* 调整合适的标题大小 */
-    font-weight: bold; /* 加粗 */
-    color: #333; /* 深灰色，更柔和 */
-    text-align: center; /* 居中 */
-    margin-bottom: 10px; /* 与下方内容保持间距 */
-  }
-  .section {
-  padding-top: 3rem; /* 默认是 3rem，可以减少 */
-  padding-bottom: 3rem;
-}
-
-  .content p {
-    font-size: 1.2rem; /* 调整字体大小，例如 1.2rem 或 16px */
-    line-height: 1.6;  /* 增加行距，提高可读性 */
-  }
-  .expandable-card .card-text-container {
-    max-height: 200px;
-    overflow-y: hidden;
-    position: relative;
-  }
-
-  .expandable-card.expanded .card-text-container {
-    max-height: none;
-  }
-
-  .expand-btn {
-    position: relative;
-    display: none;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #510c75;
-    border-color: transparent;
-  }
-
-  .expand-btn:hover {
-    background-color: rgba(200, 200, 200, 0.8);
-    text-decoration: none;
-    border-color: transparent;
-    color: #510c75;
-  }
-
-  .expand-btn:focus {
-    outline: none;
-    text-decoration: none;
-  }
-
-  .expandable-card:not(.expanded) .card-text-container:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
-  }
-
-  .expandable-card:not(.expanded) .expand-btn {
-    margin-top: -40px;
-  }
-
-  .card-body {
-    padding-bottom: 5px;
-  }
-
-  .vertical-flex-layout {
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    gap: 0.5rem 0.9rem;
+    text-align: center;
+  }
+
+  .author-row {
+    margin-bottom: 0.45rem;
+    font-size: 1.16rem;
+  }
+
+  .author-block a {
+    color: rgb(41, 179, 225);
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .author-block a:hover {
+    text-decoration: underline;
+  }
+
+  .publication-authors {
+    margin-top: 0.55rem;
+    font-size: 1.08rem;
+    color: #374151;
+  }
+
+  .author-notes {
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+    color: #6b7280;
+  }
+
+  .publication-links {
+    margin-top: 1.5rem;
+  }
+
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-muted {
+    background: #f7f9fc;
+  }
+
+  .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .content p,
+  .content li {
+    font-size: 1.06rem;
+    line-height: 1.75;
+  }
+
+  .note-box,
+  .stat-card,
+  .figure-frame {
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .note-box:hover,
+  .stat-card:hover,
+  .figure-frame:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+  }
+
+  .note-box {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 1.2rem 1rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+
+  .embed-wrapper {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid #dbe4f0;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  .embed-wrapper iframe {
+    width: 100%;
+    height: 460px;
+    border: 0;
+    display: block;
+    background: #f9fafb;
+  }
+
+  .figure-frame {
+    padding: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .figure-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .analysis-figure img {
+    height: 180px;
+    object-fit: contain;
+    background: #ffffff;
+  }
+
+  .analysis-row {
+    align-items: stretch;
+  }
+
+  .analysis-row .column {
+    display: flex;
+  }
+
+  .analysis-row .analysis-figure {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
   }
 
-  .figure-img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .adjustable-font-size {
-    font-size: calc(0.5rem + 2vw);
-  }
-
-  .chat-history {
+  .analysis-row .mini-caption {
     flex-grow: 1;
-    overflow-y: auto;
-    padding: 5px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
   }
 
-  #gradio pre {
-    background-color: transparent;
+  .mini-caption {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: #6b7280;
+  }
+
+  .pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.1rem;
+  }
+
+  .pill {
+    background: #eef6ff;
+    color: #155e75;
+    border: 1px solid #dbeafe;
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #111827;
+    color: #f9fafb;
+    border-radius: 16px;
+    padding: 1.1rem 1.25rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    .stat-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .publication-title {
+      font-size: 2rem !important;
+    }
+
+    .publication-subtitle {
+      font-size: 1rem;
+    }
+
+    .author-row {
+      font-size: 1rem;
+    }
+
+    .embed-wrapper iframe {
+      height: 380px;
+    }
+
+    .stat-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-menu">
-          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-            <!-- 这里本来有 "🔥 More Research"，现在已经去掉 -->
-          </div>
-        </div>
-      </nav>
-      
-
-
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">CapArena: Benchmarking and Analyzing Detailed Image Captioning in the LLM Era</h1>
-            <!--<h2 class="subtitle is-3 publication-subtitle">A detailed and interactive leaderboard for Vision-Language Models</h2> -->
-            
-            <!--TODO <h5 class="subtitle is-5 publication-awards">NeurIPS 2023 (Oral)</h5> -->
-            <div class="is-size-5">
-              <!-- 第一行作者 -->
+            <h1 class="title is-1 publication-title">OpenMobile: Building Open Mobile Agents with Task and Trajectory Synthesis</h1>
+            <div class="author-row">
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=S2IPVnwAAAAJ&hl=en&oi=ao" style="color:rgb(41, 179, 225);font-weight:normal;">Kanzhi Cheng<sup>1†</sup></a>,
+                <a href="https://scholar.google.com/citations?user=S2IPVnwAAAAJ&hl=en&oi=ao">Kanzhi Cheng<sup>1,2,3</sup></a>,
               </span>
               <span class="author-block">
-                <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Wenpo Song<sup>1†</sup></a>,
+                <a href="" onclick="return false;">Zehao Li<sup>4</sup></a>,
               </span>
               <span class="author-block">
-                <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Jiaxin Fan<sup>1†</sup></a>,
+                <a href="https://scholar.google.com/citations?user=8WfKu9UAAAAJ&hl=en">Zheng Ma<sup>2</sup></a>,
               </span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=8WfKu9UAAAAJ&hl=en" style="color:rgb(41, 179, 225);font-weight:normal;">Zheng Ma<sup>1</sup></a>,
+                <a href="" onclick="return false;">Nuo Chen<sup>1</sup></a>,
               </span>
               <span class="author-block">
-                <a href="https://qiushisun.github.io/" style="color:rgb(41, 179, 225);font-weight:normal;">Qiushi Sun<sup>2</sup></a>,
+                <a href="" onclick="return false;">Jialin Cao<sup>1</sup></a>
               </span>
             </div>
-            
-            <div class="is-size-5">
-              <!-- 第二行作者 -->
-  
+
+            <div class="author-row">
               <span class="author-block">
-                <a href="https://xufangzhi.github.io/" style="color:rgb(41, 179, 225);font-weight:normal;">Fangzhi Xu<sup>3</sup></a>,
+                <a href="https://qiushisun.github.io/">Qiushi Sun<sup>5</sup></a>,
               </span>
               <span class="author-block">
-                <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Chenyang Yan<sup>1</sup></a>,
+                <a href="https://heroding77.github.io/">Zichen Ding<sup>4</sup></a>,
               </span>
               <span class="author-block">
-                <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Nuo Chen<sup>1</sup></a>,
+                <a href="https://xufangzhi.github.io/">Fangzhi Xu<sup>3,6</sup></a>,
               </span>
               <span class="author-block">
-                <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Jianbing Zhang<sup>1</sup></a>,
+                <a href="https://scholar.google.com/citations?user=_VKQ9zAAAAAJ&hl=en">Hang Yan<sup>6</sup></a>,
               </span>
               <span class="author-block">
-                <a href="XXX" style="color:rgb(41, 179, 225);font-weight:normal;">Jiajun Chen<sup>1</sup></a>,
+                <a href="https://cs.nju.edu.cn/_upload/tpl/00/ad/173/template173/index_en.htm">Jiajun Chen<sup>1</sup></a>
               </span>
             </div>
-            
-            
+
+            <div class="author-row">
+              <span class="author-block">
+                <a href="https://tuanluu.github.io/">Luu Anh Tuan<sup>3</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://cs.nju.edu.cn/zhangjb/index.htm">Jianbing Zhang<sup>1</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=zdgKJXIAAAAJ&hl=zh-CN">Lewei Lu<sup>2</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="http://dahua.site/">Dahua Lin<sup>2</sup></a>
+              </span>
+            </div>
+
             <div class="publication-authors">
               <span class="author-block"><sup>1</sup>Nanjing University</span>
-              <span class="author-block"><sup>2</sup>The University of Hong Kong</span>
-              <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
-            </div>  
-            
-            <div class="is-size-6 publication-authors">
-              <span class="author-block"><sup>† </sup>Equal contribution.</span>
+              <span class="author-block"><sup>2</sup>SenseTime</span>
+              <span class="author-block"><sup>3</sup>Nanyang Technological University</span>
             </div>
-
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                    <!-- TODO-->
-                  <a href="https://arxiv.org/abs/2503.12329" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="https://x.com/njucckevin/status/1902547937051467956" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-twitter"></i>
-                    </span>
-                    <span>Twitter / X</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                    <!-- TODO-->
-                  <a href="https://github.com/njucckevin/CapArena" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                    <!-- TODO-->
-                  <a href="https://huggingface.co/spaces/yan111222/CapArena_Auto" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-share-square"></i>
-                    </span>
-                    <span>Leaderboard</span>
-                  </a>
-                </span>
-
-              </div>
+            <div class="publication-authors">
+              <span class="author-block"><sup>4</sup>Shanghai AI Laboratory</span>
+              <span class="author-block"><sup>5</sup>The University of Hong Kong</span>
+              <span class="author-block"><sup>6</sup>Xi'an Jiaotong University</span>
+            </div>
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="" onclick="return false;" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="" onclick="return false;" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">🤗</span>
+                  <span>Model</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="" onclick="return false;" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">🤗</span>
+                  <span>Data</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/paper-code-preview-4C99" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#hf-space" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-rocket"></i></span>
+                  <span>DataViewer</span>
+                </a>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
- 
 
-  <section class="hero teaser">
-    <h4 class="subtitle has-text-centered">
-      <h3 class="leaderboard-title">Leaderboard</h3>
-      </h4>
-
-
-    
-  </section>
-  <p style="text-align:center">
-    <!-- TODO-->
-  <iframe
-  src="https://yan111222-caparena-auto.hf.space"
-  frameborder="0"
-  width="1200"
-  height="600"
-></iframe>
-</p>
-
-  <section class="section"  style="background-color:#efeff081">
+  <section class="section" id="hf-space">
     <div class="container is-max-desktop">
-      <!-- TODO 摘要-->
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">OpenMobile DataViewer</h2>
+      </div>
+      <div class="content has-text-centered">
+        <p>
+          We provide an online website to visualize OpenMobile's synthesized trajectories. Have a try!
+        </p>
+      </div>
+      <div class="embed-wrapper">
+        <iframe src="about:blank" title="OpenMobile data viewer placeholder"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
-        <div class="column is-six-fifths">
-          <h2 class="title is-3">Abstract</h2>
+        <div class="column is-full">
+          <h2 class="title is-3 section-title">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Image captioning has been a longstanding challenge in vision-language research. With the rise of LLMs, modern Vision-Language Models (VLMs) generate detailed and comprehensive image descriptions. However, benchmarking the quality of such captions remains unresolved. This paper addresses two key questions:<strong>(1) How well do VLMs actually perform on image captioning, particularly compared to humans?</strong> We built CapArena, a platform with over 6000 pairwise caption battles and high-quality human preference votes. Our Arena-style evaluation marks a milestone, showing that leading models like GPT-4o achieve or even surpass human performance, while most open-source models lag behind. <strong>(2) Can automated metrics reliably assess caption quality?</strong> Using human annotations from CapArena, we evaluate traditional and recent captioning metrics, as well as VLM-as-a-Judge. Our analysis reveals that while some metrics (e.g., METEOR) show decent caption-level agreement with humans, their systematic biases lead to inconsistencies in model ranking. In contrast, VLM-as-a-Judge demonstrates robust discernment at both the caption and model levels. Building on these insights, we release CapArena-Auto, an accurate and efficient automated benchmark for detailed captioning, achieving 94.3% correlation with human rankings at just $4 per test. 
-           </p>
+              Mobile agents powered by vision-language models have demonstrated impressive capabilities in automating mobile tasks, with recent leading models achieving a marked performance leap, e.g., nearly 70% success on AndroidWorld. However, these systems keep their training data closed and remain opaque about their task and trajectory synthesis recipes. We present <strong>OpenMobile</strong>, an open-source framework that synthesizes high-quality task instructions and agent trajectories, with two key components: (1) The first is a scalable task synthesis pipeline that constructs a global environment memory from exploration, then leverages it to generate diverse and grounded instructions. and (2) a policy-switching strategy for trajectory rollout. By alternating between learner and expert models, it captures essential error-recovery data often missing in standard imitation learning. Agents trained on our data achieve competitive results across three dynamic mobile agent benchmarks: notably, our fine-tuned Qwen2.5-VL and Qwen3-VL reach 51.7% and <strong>64.7% on AndroidWorld</strong>, far surpassing existing open-data approaches. Furthermore, we conduct transparent analyses on the overlap between our synthetic instructions and benchmark test sets, and verify that performance gains stem from broad functionality coverage rather than benchmark overfitting.
+            </p>
           </div>
         </div>
       </div>
@@ -295,219 +400,203 @@
   </section>
 
   <section class="section">
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">How well do current VLMs actually perform on image captioning?</h2>
-      </div>
-    </div>
-  
     <div class="container is-max-desktop">
       <div class="columns is-centered">
-        <div class="column">
+        <div class="column is-full">
+          <div class="has-text-centered">
+            <h2 class="title is-3 section-title">Why OpenMobile?</h2>
+          </div>
           <div class="content">
             <p>
-              We built CapArena, the first large-scale human-centered empirical study to benchmark advanced VLMs performance, which contained over 6000 pairwise caption battles and high-quality human preference votes. Our arena-style evaluation marks a milestone, showing that leading models like GPT-4o achieve or even surpass human performance, while most open-source models still lag behind.
+              Recent industrial mobile agents approach 70% success on AndroidWorld, while open-data models remain
+              around 30%. <strong>The open-source community cannot train models that perform competitively on dynamic mobile agent benchmarks.</strong> OpenMobile is designed to close this gap with an open recipe for <strong>task synthesis</strong>
+              and <strong>trajectory rollout</strong>.
             </p>
-            <!-- 插入第一张图片 -->
-            <figure class="image-container">
-              <img src="figures/Elo_rating.PNG" alt="Elo_rating">
-              <img src="figures/win_rate_mat.PNG" alt="win_rate_mat">
-            </figure>
             <p>
-              CapArena uncovers disparities in fine-grained visual perception across models. As shown in the correlation between vision-language benchmark scores and CapArena ranking, strong performance on general benchmarks does not always translate to superior captioning ability.
+              We also conduct transparent analyses on the overlap between synthesized instructions and benchmark test
+              instructions to clarify community concerns about data leakage. The results show that OpenMobile's gains do
+              not depend on a few test-similar instructions; instead, they are driven by broad functionality coverage
+              and improvement in generalizable agentic capability.
             </p>
-            <figure class="image-one2">
-              <img src="figures/rank_score.PNG" alt="rank_score">
-            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="figure-frame">
+            <img src="figures/fig1.pdf.png" alt="OpenMobile main results figure">
+            <p class="mini-caption">
+              Performance comparison across AndroidWorld, AndroidLab, and MobileWorld, together with data scaling and
+              error-correction analysis.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <br>
-    <br>
-
-    <style>
-      .requirements-box {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .image-container {
-        display: flex; 
-        justify-content: center; 
-        gap: 10px; 
-      }
-      .image-container img {
-        width: 48%; 
-        height: 48%;
-      }
-      .requirements-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-  
-      .requirement {
-        color: #2c3e50;
-        font-weight: 600;
-      }
-  
-      .title.is-4 {
-        margin-top: 2rem;
-        color: #34495e;
-      }
-      .image-one2 img {
-        width: 100%;  
-        height: 100%;
-        display: block;
-        margin: 0 auto; 
-      }
-    </style>
   </section>
 
-
-  <section class="section">
-            <!-- 第二部分：自动评测指标的可靠性 -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">Can automated metrics reliably assess detailed caption quality?</h2>
-      </div>
-    </div>
+  <section class="section section-muted">
     <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">Framework Overview</h2>
+      </div>
+      <div class="columns is-vcentered">
+        <div class="column is-7">
+          <div class="figure-frame">
+            <img src="figures/fig2.pdf.png" alt="OpenMobile framework overview">
+            <p class="mini-caption">
+              OpenMobile first builds a global memory of app functionalities from exploration, then synthesizes grounded
+              instructions and rollout trajectories with policy switching.
+            </p>
+          </div>
+        </div>
+        <div class="column is-6">
           <div class="content">
             <p>
-              Using human annotations from CapArena, we evaluate traditional captioning metrics (e.g., BLEU, CIDER, METEOR) and recent proposed captioning metrics, as well as the ability of VLM-as-a-Judge to assess detailed caption quality. 
+              <strong>Scalable task synthesis.</strong> Instead of generating instructions from a single local
+              trajectory, OpenMobile first explores the environment to build a global environment memory, then retrieves
+              short-term and long-term memory to compose diverse and grounded tasks.
             </p>
-            <figure class="image-one1">
-              <img src="figures/Eva_of_var_metrics.PNG" alt="Eva_of_var_metrics">
-            </figure>
             <p>
-              Our results reveal that most metrics designed for short captions, such as CLIPScore, fail entirely in the detailed captioning task. Although some rule-based metrics, such as METEOR, exhibit decent agreement with human judgments at the caption level, they suffer from systematic biases across different VLMs. This results in low agreement at the model level, where the rankings produced by these metrics deviate significantly from human rankings. In contrast, we introduce VLM-as-a-Judge with reference captions, which demonstrates robust discernment for detailed captions. It achieves the highest alignment with human judgments at both the caption and model levels.
-            </p>
-            <figure class="image-one3">
-              <img src="figures/Metrics_bias.PNG" alt="Metrics_bias"> 
-            </figure>
-            <p>
-              <strong>Systematic biases—overestimating or underestimating certain models are a critical concern.</strong> METEOR and Output Length (which simply favors longer captions) exhibit decent caption-level agreement, but their model-level agreement is notably lower. As displayed above, all metrics exhibit systematic biases. The degree of bias varies across metrics; Output Length shows a particularly strong bias, while GPT-4o-as-a-Judge has a lower bias than METEOR (average 4.4% vs. 8.2%). This suggests that the disagreement between GPT-4o-as-a-Judge and humans is more likely due to random preferences per independent sample, rather than harmful bias towards specific models, leading to more accurate model ranking estimates.
+              <strong>Policy-switching rollout.</strong> Rather than relying on ideal expert trajectories, the
+              rollout alternates between learner and expert models. Error-intervention switching introduces corrective
+              signals that are crucial for real-world error recovery.
             </p>
           </div>
         </div>
       </div>
     </div>
-    
-    <br>
-    <br>
-  
-    <style>
-      .requirements-box {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .image-container {
-        display: flex; 
-        justify-content: center; 
-        gap: 10px; 
-      }
-      .image-one1 img {
-        width: 80%;  
-        height: 80%;
-        display: block;
-        margin: 0 auto; 
-      }
-      .image-one3 img {
-        width: 85%;  
-        height: 85%;
-        display: block;
-        margin: 0 auto; 
-      }
-      .image-container img {
-        width: 48%; 
-        height: 48%;
-      }
-      .requirements-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-  
-      .requirement {
-        color: #2c3e50;
-        font-weight: 600;
-      }
-  
-      .title.is-4 {
-        margin-top: 2rem;
-        color: #34495e;
-      }
-    </style>
   </section>
-  
+
   <section class="section">
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">CapArena-Auto: An Automated Benchmark for Detailed Captioning</h2>
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">OpenMobile Dataset</h2>
+      </div>
+      <div class="content">
+        <p>
+          We instantiate OpenMobile on the AndroidWorld emulator infrastructure. The resulting dataset covers 20 Android apps 
+          and provides both high-level task instructions and agent execution trajectories.
+        </p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">2.8K</div>
+          <div class="stat-label">Synthesized instructions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">34K</div>
+          <div class="stat-label">Action steps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">20</div>
+          <div class="stat-label">Android apps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12.2</div>
+          <div class="stat-label">Avg. steps per trajectory</div>
+        </div>
       </div>
     </div>
+  </section>
+
+  <section class="section section-muted">
     <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-justified">
-            <p class="mb-5">
-              In light of the above findings, we release CapArena-Auto, an automated benchmark for detailed captioning. It comprises 600 samples and innovatively adopts the pairwise battle paradigm to improve evaluation reliability. VLM-as-a-Judge is employed to estimate human preferences by comparing captions against three baseline models. With 94.3% correlation to human rankings and just $4 per test, CapArena-Auto offers a fast and robust pipeline for evaluating detailed captioning.
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">Main Results</h2>
+      </div>
+      <div class="content">
+        <p>
+          Models fine-tuned on OpenMobile data substantially outperform open-data baselines across AndroidWorld,
+          AndroidLab, and MobileWorld. Notably, our Qwen2.5-VL-7B and Qwen3-VL-8B variants reach
+          <strong>51.7%</strong> and <strong>64.7%</strong> Pass@1 on AndroidWorld, while the 8B model also achieves
+          <strong>51.5%</strong> on AndroidLab and <strong>17.7%</strong> on the more challenging MobileWorld benchmark.
+        </p>
+        <p>
+          These gains transfer beyond the data collection environment, showing that the synthesized tasks and rollout
+          trajectories provide strong generalization to unseen apps and long-horizon workflows.
+        </p>
+      </div>
+      <div class="figure-frame">
+        <img src="figures/main_result.png" alt="OpenMobile main results table">
+        <p class="mini-caption">
+          Main results on AndroidWorld, AndroidLab, and MobileWorld. OpenMobile outperforms open-data baselines by a
+          large margin and remains competitive with leading closed-data systems.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">What Makes It Work?</h2>
+      </div>
+      <div class="content">
+        <p>
+          We analyze OpenMobile data from two complementary angles. First, we examine <strong>potential benchmark overlap</strong>, since our
+          data is synthesized in the AndroidWorld environment. Although OpenMobile instructions are naturally more
+          similar to the test set, only a small fraction exhibit high similarity, suggesting moderate relevance rather
+          than task-level duplication. Removing a small portion of the most test-similar samples causes only a marginal
+          performance drop, showing that our gains do not rely on a few benchmark-like examples. The full list of
+          similar instruction pairs is provided in the paper.
+        </p>
+        <p>
+          Second, we study <strong>functionality coverage</strong> to understand what truly drives downstream
+          performance. As synthesized instructions scale, OpenMobile consistently covers more of the atomic
+          functionalities required by benchmark tasks than a coupled baseline. Tasks with higher functionality coverage
+          are more likely to be solved successfully, while tasks involving more required functionalities remain harder.
+          Together, these analyses show that OpenMobile works not because of benchmark overfitting, but because its
+          decoupled synthesis pipeline provides broad and compositional coverage of app capabilities.
+        </p>
+      </div>
+      <div class="columns analysis-row">
+        <div class="column is-6">
+          <div class="figure-frame analysis-figure">
+            <img src="figures/overlap.pdf.png" alt="Overlap analysis">
+            <p class="mini-caption">
+              <strong>Overlap analysis.</strong> OpenMobile instructions are grounded in the benchmark environment, but
+              only a small fraction are highly similar to AndroidWorld test instructions. Removing a small percentage of
+              the most similar training instructions leads to only marginal performance drop, mitigating concerns about
+              benchmark data leakage.
             </p>
-            <figure class="image-one">
-              <img src="figures/correlation.PNG" alt="correlation">   
-            </figure>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="figure-frame analysis-figure">
+            <img src="figures/functionality.pdf.png" alt="Functionality coverage analysis">
+            <p class="mini-caption">
+              <strong>Functionality coverage analysis.</strong> OpenMobile consistently achieves higher coverage of
+              benchmark-required functionalities as instruction count increases. Tasks that are simpler and have higher
+              functionality coverage by synthetic data achieve higher downstream success rates.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  
-    <style>
-
-      .image-one img {
-        width: 50%;  
-        height: auto;
-        display: block;
-        margin: 0 auto; 
-      }
-      .text-center {
-        text-align: center;
-      }
-  
-    </style>
   </section>
 
-  <section class="section" id="BibTeX">
+  <section class="section section-muted" id="BibTeX">
     <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@article{cheng2025caparena,
-  title={CapArena: Benchmarking and Analyzing Detailed Image Captioning in the LLM Era},
-  author={Cheng, Kanzhi and Song, Wenpo and Fan, Jiaxin and Ma, Zheng and Sun, Qiushi and Xu, Fangzhi and Yan, Chenyang and Chen, Nuo and Zhang, Jianbing and Chen, Jiajun},
-  journal={arXiv preprint arXiv:2503.12329},
-  year={2025}
+      <h2 class="title is-3 section-title">BibTeX</h2>
+      <pre><code>@article{cheng2026openmobile,
+  title={OpenMobile: Building Open Mobile Agents with Task and Trajectory Synthesis},
+  author={Cheng, Kanzhi and Li, Zehao and Ma, Zheng and Chen, Nuo and Cao, Jialin and Sun, Qiushi and Ding, Zichen and Xu, Fangzhi and Yan, Hang and Chen, Jiajun and Luu, Anh Tuan and Zhang, Jianbing and Lu, Lewei and Lin, Dahua},
+  year={2026},
+  note={Under review}
 }</code></pre>
     </div>
   </section>
 
   <section class="section" id="Acknowledgement">
     <div class="container is-max-desktop content">
-      <h2 class="title">Acknowledgement</h2>
+      <h2 class="title is-3 section-title">Acknowledgement</h2>
       <p>
-        This website is adapted from <a href="https://github.com/llava-vl/llava-vl.github.io">LLaVA-VL</a> and <a
-        href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-        Commons Attribution-ShareAlike 4.0 International License</a>. 
-
-      <p>
+        This website is adapted from <a href="https://github.com/llava-vl/llava-vl.github.io">LLaVA-VL</a> and
+        <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
     </div>
   </section>
 </body>
-
 </html>
